@@ -2,11 +2,10 @@
 # Rejuvenation Team for the game
 # Wiresegal for helping me code this and creating the framework
 # Toby Fox/Undertale Team for music
-begin
-  missing = ['0000.injection.rb', '0000.textures.rb','__jakeebtrainers.rb','0000.music.rb'].select { |f| !File.exist?(File.join(__dir__, f)) }
-  raise "Dependency #{missing[0]} is required by #{__FILE__}. Please install it." if missing.length == 1
-  raise "Dependencies #{missing.join(", ")} are required by #{__FILE__}. Please install them." if missing.length > 1
-end
+
+# DEPENDENCIES
+# 0000.injection.rb, 0000.textures.rb, trainerRebattler.rb, 0000.music.rb
+
 # Music Signpost
 class Game_System
   alias :jakeebsans_old_initialize :initialize

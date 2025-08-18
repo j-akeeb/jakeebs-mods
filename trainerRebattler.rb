@@ -1,8 +1,9 @@
- begin
-  missing = ['0000.textures.rb'].select { |f| !File.exist?(File.join(__dir__, f)) }
-  raise "Dependency #{missing[0]} is required by #{__FILE__}. Please install it." if missing.length == 1
-  raise "Dependencies #{missing.join(", ")} are required by #{__FILE__}. Please install them." if missing.length > 1
-end
+# CREDITS
+# Rejuvenation Team for the game
+# Wiresegal for helping me code this and creating the framework
+
+# DEPENDENCIES
+# 0000.textures.rb
 
 alias :trainerrefight_old_pbPrepareBattle :pbPrepareBattle
 
