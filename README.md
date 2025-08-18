@@ -1,14 +1,6 @@
-jakeeb's mods
+# jakeeb's mods
 
-===============
-
-
-
-\## Instructions
-
-
+## Instructions
 
 Download `jakeebloader` and place it in `Data/Mods`.
-
 Create a new folder in `Data/Mods` titled `jakeebs-mods` and place the other mods inside.
-
