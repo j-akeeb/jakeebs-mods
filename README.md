@@ -12,7 +12,7 @@ Create a new folder in `Data/Mods` titled `jakeebs-mods` and place the other mod
 ## Contents
 
 - rebattleHQ.rb (depends on 0000.injection.rb, 0000.textures.rb, trainerRebattler.rb, 0000.music.rb)
-  adds an NPC in Gearen Labs that takes you to an area to rebattle NPCs with their exact teams, fields, etc. and putting you at the level cap.
+  adds an NPC in Gearen Labs and the GDC Central Building that takes you to an area to rebattle NPCs with their exact teams, fields, etc. and putting you at the level cap.
 - trainerRebattler.rb (depends on 0000.textures)
   adds a framework for rebattling trainers alongside every major battle themselves. (WIP)
 - exportTeam.rb
