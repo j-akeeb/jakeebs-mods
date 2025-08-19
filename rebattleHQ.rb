@@ -55,9 +55,9 @@ $WIRE_LATE_LOAD << proc {
         page.setGraphic("NPC jakeeb", direction: :Down, pattern: 0)
         page.requiresVariable(:StarterChoice, 1) # ensures npc doesn't appear when you don't have a pokemon
         page.interact(
-          [:ControlSelfSwitch, "A", true],
-          [:Script, "$game_self_switches[[294, 'jakeeb_to_xans', 'A']] = true"],
           [:ConditionalBranch, :Character, :Player, :Up],
+            [:ControlSelfSwitch, "A", true],
+            [:Script, "$game_self_switches[[294, 'jakeeb_to_xans', 'A']] = true"],
             [:ShowText, "???: Hello there! I'm Jakeeb."],
             [:ShowText, "I found someone while exploring around here that allows you to rebattle trainers."],
             [:ShowText, "They call themself \\c[6]Madame Xans\\c[0\]."],
@@ -121,9 +121,9 @@ $WIRE_LATE_LOAD << proc {
         page.setGraphic("NPC jakeeb", direction: :Left, pattern: 0)
         page.requiresVariable(:StarterChoice, 1) # ensures npc doesn't appear when you don't have a pokemon
         page.interact(
-          [:ControlSelfSwitch, "A", true],
-          [:Script, "$game_self_switches[[304, 'jakeeb_to_xans', 'A']] = true"],
           [:ConditionalBranch, :Character, :Player, :Right],
+            [:ControlSelfSwitch, "A", true],
+            [:Script, "$game_self_switches[[304, 'jakeeb_to_xans', 'A']] = true"],
             [:ShowText, "???: Hello there! I'm Jakeeb."],
             [:ShowText, "I found someone while exploring around here that allows you to rebattle trainers."],
             [:ShowText, "They call themself \\c[6]Madame Xans\\c[0\]."],
