@@ -49,22 +49,26 @@ $WIRE_LATE_LOAD << proc {
         page.setGraphic("NPC jakeeb", direction: :Down, pattern: 0)
         page.interact(
           [:ControlSelfSwitch, "A", true],
-          [:ShowText, "???: Hello there! I'm Jakeeb."],
-          [:ShowText, "I found someone while exploring around here that allows you to rebattle trainers."],
-          [:ShowText, "They call themself \\c[6]Madame Xans\\c[0\]."],
-          [:ShowText, "Would you like me to take you to them?"],
-          [:ShowChoices, ["Yes", "No"], 2],
-          [:When, 0, "Yes"],
-            [:ShowText, "Right this way, then!"],
-            [:PlaySoundEvent, "Entering Door", 80, 100],
-            [:ChangeScreenColorTone, Tone.new(-255,-255,-255,0), 10],
-            [:Wait, 10],
-            [:TransferPlayer, :Constant, 308, 26, 46, :Up, true],
-            [:ChangeScreenColorTone, Tone.new(0,0,0,0), 10],
-            [:Wait, 10],
-          :Done,
-          [:When, 1, "No"],
-            [:ShowText, "JAKEEB: Okay then, talk to me if  you would like me to warp you to them later!"],
+          [:ConditionalBranch, :Character, :Player, :Up],
+            [:ShowText, "???: Hello there! I'm Jakeeb."],
+            [:ShowText, "I found someone while exploring around here that allows you to rebattle trainers."],
+            [:ShowText, "They call themself \\c[6]Madame Xans\\c[0\]."],
+            [:ShowText, "Would you like me to take you to them?"],
+            [:ShowChoices, ["Yes", "No"], 2],
+            [:When, 0, "Yes"],
+              [:ShowText, "Right this way, then!"],
+              [:PlaySoundEvent, "Entering Door", 80, 100],
+              [:ChangeScreenColorTone, Tone.new(-255,-255,-255,0), 10],
+              [:Wait, 10],
+              [:TransferPlayer, :Constant, 308, 26, 46, :Up, true],
+              [:ChangeScreenColorTone, Tone.new(0,0,0,0), 10],
+              [:Wait, 10],
+              :Done,
+            [:When, 1, "No"],
+              [:ShowText, "JAKEEB: Okay then, talk to me if  you would like me to warp you to them later!"],
+              :Done,
+          :Else,
+            [:ShowText, "???: Please don't talk to me from this side. I have social anxiety."], # this is true
           :Done
         )
       }
@@ -73,20 +77,25 @@ $WIRE_LATE_LOAD << proc {
         page.requiresSelfSwitch("A")
         page.requiresVariable(:StarterChoice, 1)
         page.setGraphic("NPC jakeeb", direction: :Down, pattern: 0)
+
         page.interact(
-          [:ShowText, "JAKEEB: Would you like me to take you to Xans HQ?"],
-          [:ShowChoices, ["Yes", "No"], 2],
-          [:When, 0, "Yes"],
-            [:ShowText, "Right this way, then!"],
-            [:PlaySoundEvent, "Entering Door", 80, 100],
-            [:ChangeScreenColorTone, Tone.new(-255,-255,-255,0), 10],
-            [:Wait, 10],
-            [:TransferPlayer, :Constant, 308, 26, 46, :Up, true],
-            [:ChangeScreenColorTone, Tone.new(0,0,0,0), 10],
-            [:Wait, 10],
-          :Done,
-          [:When, 1, "No"],
-          :Done
+          [:ConditionalBranch, :Character, :Player, :Up],
+            [:ShowText, "JAKEEB: Would you like me to take you to Xans HQ?"],
+            [:ShowChoices, ["Yes", "No"], 2],
+              [:When, 0, "Yes"],
+                [:ShowText, "Right this way, then!"],
+                [:PlaySoundEvent, "Entering Door", 80, 100],
+                [:ChangeScreenColorTone, Tone.new(-255,-255,-255,0), 10],
+                [:Wait, 10],
+                [:TransferPlayer, :Constant, 308, 26, 46, :Up, true],
+                [:ChangeScreenColorTone, Tone.new(0,0,0,0), 10],
+                [:Wait, 10],
+              :Done,
+              [:When, 1, "No"],
+              :Done,
+          :Else,
+            [:ShowText, "JAKEEB: Please don't talk to me from this side. I have social anxiety."],
+          :Done          
         )
       }
     }
