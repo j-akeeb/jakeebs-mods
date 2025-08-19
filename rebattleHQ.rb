@@ -5,37 +5,38 @@
 
 # DEPENDENCIES
 # 0000.injection.rb, 0000.textures.rb, trainerRebattler.rb, 0000.music.rb
+
+Variables[:StarterChoice] = 7
+Variables[:PlayerPositionX] = 468
+Variables[:PlayerPositionY] = 469
+Variables[:PlayerMapLocation] = 467
+
+
+# Music Signpost
+class Game_System
+  alias :jakeebsans_old_initialize :initialize
+
+  def initialize(*args, **kwargs)
+    ret = jakeebsans_old_initialize(*args, **kwargs)
+    MusicSignpostDisplay::MAPPING["jakeeb_sans"] = "[Music] sans." if defined?(MusicSignpostDisplay)
+    return ret
+  end
+end
+# Map name override
+class MapMetadata
+  attr_writer :ShowArea
+  attr_writer :MapPosition
+end
+$cache.mapinfos[308].name = "Team Xans HQ"
+$cache.mapdata[308].ShowArea = true
+$cache.mapdata[308].MapPosition = [0, 22, 29]
 $WIRE_LATE_LOAD = [] unless defined?($WIRE_LATE_LOAD)
 $WIRE_LATE_LOAD << proc {
-  Variables[:StarterChoice] = 7
-  Variables[:PlayerPositionX] = 468
-  Variables[:PlayerPositionY] = 469
-  Variables[:PlayerMapLocation] = 467
-
-
-  # Music Signpost
-  class Game_System
-    alias :jakeebsans_old_initialize :initialize
-
-    def initialize(*args, **kwargs)
-      ret = jakeebsans_old_initialize(*args, **kwargs)
-      MusicSignpostDisplay::MAPPING["jakeeb_sans"] = "[Music] sans." if defined?(MusicSignpostDisplay)
-      return ret
-    end
-  end
-  # Map name override
-  class MapMetadata
-    attr_writer :ShowArea
-    attr_writer :MapPosition
-  end
-  $cache.mapinfos[308].name = "Team Xans HQ"
-  $cache.mapdata[308].ShowArea = true
-  $cache.mapdata[308].MapPosition = [0, 22, 29]
   # Texture Overrides
-  TextureOverrides.registerTextureOverride(TextureOverrides::CHARS + "NPC jakeeb", "Data/Mods/jakeebs-mods/rebattleInfo/jakeeb")
+  TextureOverrides.registerTextureOverride(TextureOverrides::CHARS + "NPC jakeeb", __dir__[Dir.pwd.length+1..] + "/rebattleInfo/jakeeb")
   # Music Overrides
-  MusicOverrides.registerMusicOverride("Audio/BGM/jakeeb_sans", "Data/Mods/jakeebs-mods/rebattleInfo/jakeeb_sans")
-  MusicOverrides.registerMusicOverride("Audio/SE/jakeeb_drink", "Data/Mods/jakeebs-mods/rebattleInfo/jakeeb_drink")
+  MusicOverrides.registerMusicOverride("Audio/BGM/jakeeb_sans", __dir__[Dir.pwd.length+1..] + "/rebattleInfo/jakeeb_sans")
+  MusicOverrides.registerMusicOverride("Audio/SE/jakeeb_drink", __dir__[Dir.pwd.length+1..] + "/rebattleInfo/jakeeb_drink")
   # Map Patches
   InjectionHelper.defineMapPatch(304) { |map| # Gearen Labs
     # Add desk
@@ -85,7 +86,7 @@ $WIRE_LATE_LOAD << proc {
       # Second+ Interaction
       event.newPage { |page|
         page.requiresSelfSwitch("A")
-        page.requiresVariable(:StarterChoice, 1) # ensures npc doesn't appear when you don't have a pokemon
+
         page.setGraphic("NPC jakeeb", direction: :Down, pattern: 0)
 
         page.interact(
@@ -150,7 +151,6 @@ $WIRE_LATE_LOAD << proc {
       # Second+ Interaction
       event.newPage { |page|
         page.requiresSelfSwitch("A")
-        page.requiresVariable(:StarterChoice, 1) # ensures npc doesn't appear when you don't have a pokemon
         page.setGraphic("NPC jakeeb", direction: :Left, pattern: 0)
 
         page.interact(
@@ -240,8 +240,8 @@ $WIRE_LATE_LOAD << proc {
             [:TransferPlayer, :Variable, :PlayerMapLocation, :PlayerPositionX, :PlayerPositionY, :Right, true],
           :Else,
             [:TransferPlayer, :Variable, :PlayerMapLocation, :PlayerPositionX, :PlayerPositionY, :Down, true],
+            [:ChangeScreenColorTone, Tone.new(0,0,0,0), 10],
           :Done,
-          [:ChangeScreenColorTone, Tone.new(0,0,0,0), 10],
           [:Wait, 10],
         :Done,
         [:When, 1, "No"],

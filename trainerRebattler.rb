@@ -4,21 +4,21 @@
 
 # DEPENDENCIES
 # 0000.textures.rb
-$WIRE_LATE_LOAD = [] unless defined?($WIRE_LATE_LOAD)
-$WIRE_LATE_LOAD << proc {
+
     alias :trainerrefight_old_pbPrepareBattle :pbPrepareBattle
 
   def pbPrepareBattle(battle)
     battle.disableExpGain=true if TrainerRefightSelection.noexp
     trainerrefight_old_pbPrepareBattle(battle)
   end
-
+$WIRE_LATE_LOAD = [] unless defined?($WIRE_LATE_LOAD)
+$WIRE_LATE_LOAD << proc {
   TextureOverrides.registerTextureOverrides({
     'Graphics/Pictures/CharPosterSansXW' => "Data/Mods/jakeebs-mods/rebattleInfo/CharPosterW",
     'Graphics/Pictures/CharPosterSansX' => "Data/Mods/jakeebs-mods/rebattleInfo/CharPoster",
     'Graphics/Pictures/ShopBGSpattersSansX' => "Data/Mods/jakeebs-mods/rebattleInfo/Spatters"
   })
-
+}
   class Game_Screen
     attr_writer :weather_type
   end
@@ -441,4 +441,3 @@ $WIRE_LATE_LOAD << proc {
     end
   end
       
-}
