@@ -19,7 +19,7 @@ Create a new folder in `Data/Mods` titled `jakeebs-mods` and place the other mod
   adds a framework for rebattling trainers alongside every major battle themselves. (WIP)
 - exportTeam.rb
   allows you to export your team as a txt or copy it to the clipboard by pressing I in the party screen.
-- labyrinthStepIncreaser.rb
-  makes the maximum steps in Zorrailyn Labyrinth 100,000. (because who wants to take multiple trips)
+- labyrinthStepIncreaser.rb (requires 0000.injection.rb, 9999.lateloader.rb)
+  makes the maximum steps in Zorrailyn Labyrinth 5x the original. (because who wants to take multiple trips)
 - darkGardevoir.rb (requires darkGardevoir folder)
   adds a Dark Gardevoir form as well as a Mega Evolution accessible by using a Dusk Stone on a female Kirlia. Uses the regular Gardevoirite. (mega back sprite made by The 11th Dimension on RebornEvo!)
