@@ -4,8 +4,11 @@ $WIRE_LATE_LOAD << proc {
   TextureOverrides::ICONS + "icon282_6" => __dir__[Dir.pwd.length+1..] + "/darkGardevoir/icon_mega",
   TextureOverrides::BATTLER + "282_6" => __dir__[Dir.pwd.length+1..] + "/darkGardevoir/front_mega",
   TextureOverrides::BATTLER + "282b_6" => __dir__[Dir.pwd.length+1..] + "/darkGardevoir/back_mega",
-  TextureOverrides::BATTLER + "282_5" => __dir__[Dir.pwd.length+1..] + "/DarkGardevoir/front"
+  TextureOverrides::BATTLER + "282_5" => __dir__[Dir.pwd.length+1..] + "/darkGardevoir/front",
+  TextureOverrides::BATTLER + "282b_5" => __dir__[Dir.pwd.length+1..] + "/darkGardevoir/back",
+  TextureOverrides::ICONS + "icon282_5" => __dir__[Dir.pwd.length+1..] + "/darkGardevoir/icon"
 })
+}
 if $cache.pkmn[:GARDEVOIR].formData[:DefaultForm].is_a?(Numeric)
   $cache.pkmn[:GARDEVOIR].formData[:DefaultForm] = [0]
 end
@@ -17,13 +20,45 @@ if $cache.pkmn[:GARDEVOIR].formData[:MegaForm][:GARDEVOIRITE].is_a?(Numeric)
 end
 
 $cache.pkmn[:GARDEVOIR].formData[:MegaForm][:GARDEVOIRITE][5] = 6
-}
+
 $cache.abil[:DUSKILATE] = AbilityData.new(:DUSKILATE, {
   name: "Duskilate",
   :desc => "Normal-type moves become Dark-type moves...",
   :fullDesc => "Normal-type moves become Dark-type moves and deal 20% more damage. This overrides Ion Deluge."
 }) 
 $cache.pkmn[:GARDEVOIR].formData["Dark Form"] = {
+  kind: "Animus",
+  dexentry: "Gardevoir has unlocked its latent affinity for darkness, becoming consumed by hatred. It will still devote itself to a single cause and master.",
+  :Moveset => [
+            [0,:DARKPULSE],
+            [1,:MOONBLAST],
+            [1,:STOREDPOWER],
+            [1,:MISTYTERRAIN],
+            [1,:DAZZLINGGLEAM],
+            [1,:HEALINGWISH],
+            [1,:GROWL],
+            [1,:CONFUSION],
+            [1,:DOUBLETEAM],
+            [1,:TELEPORT],
+            [4,:CONFUSION],
+            [6,:DOUBLETEAM],
+            [9,:TELEPORT],
+            [11,:DISARMINGVOICE],
+            [14,:WISH],
+            [17,:THIEF],
+            [19,:SNARL],
+            [23,:DRAININGKISS],
+            [23,:PAINSPLIT],
+            [26,:NASTYPLOT],
+            [31,:PSYCHIC],
+            [35,:IMPRISON],
+            [40,:FUTURESIGHT],
+            [44,:CAPTIVATE],
+            [49,:HYPNOSIS],
+            [53,:DREAMEATER],
+            [58,:STOREDPOWER],
+            [62,:MOONBLAST]],
+        :compatiblemoves => [:BODYSLAM, :BURNINGJEALOUSY, :CALMMIND,:CHARGEBEAM,:CHARM, :DARKPULSE, :DAZZLINGGLEAM,:DEFENSECURL,:DOUBLEEDGE,:DRAININGKISS,:DREAMEATER,:ECHOEDVOICE,:ENERGYBALL,:EXPANDINGFORCE, :FAKETEARS, :FIREPUNCH,:FLASH,:FLING,:FOCUSBLAST,:FOULPLAY, :FUTURESIGHT,:GIGAIMPACT,:GRASSKNOT,:GUARDSWAP,:HEADBUTT,:HYPERBEAM,:HYPERVOICE, :ICEBEAM, :ICEPUNCH,:ICYWIND,:IMPRISON,:LASERFOCUS,:LIGHTSCREEN,:MAGICALLEAF,:MAGICCOAT,:MAGICROOM,:MEGAKICK,:MEGAPUNCH,:MIMIC,:MISTYEXPLOSION,:MISTYTERRAIN,:MUDSLAP,:MYSTICALFIRE,:NASTYPLOT, :NIGHTMARE,:LASHOUT, :PAINSPLIT,:POWERSWAP,:PSYCHIC,:PSYCHICTERRAIN,:PSYCHUP,:PSYSHOCK,:RAINDANCE,:RECYCLE,:REFLECT,:SAFEGUARD,:SHADOWBALL,:SHOCKWAVE,:SIGNALBEAM,:SKILLSWAP,:SNATCH,:STOREDPOWER,:SUNNYDAY,:SWIFT,:TAUNT,:TELEKINESIS,:THIEF,:THUNDERBOLT,:THUNDERPUNCH,:THUNDERWAVE,:TORMENT,:TRICK,:TRICKROOM,:TRIPLEAXEL,:WILLOWISP,:WONDERROOM,:ZENHEADBUTT],
   Abilities: [:MAGICIAN],
   Type1: :DARK,
   Type2: :FAIRY,
