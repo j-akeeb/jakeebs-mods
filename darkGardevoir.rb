@@ -94,7 +94,7 @@ alias :darkgardevoir_old_pbIconBitmap :pbIconBitmap
 alias :darkgardevoir_old_pbPokemonIconBitmap :pbPokemonIconBitmap
 
 def pbPokemonIconBitmap(pokemon,egg=false)
-  if (pokemon.species == :GARDEVOIR && pokemon.form == 3)
+  if (pokemon.species == :GARDEVOIR && (5..6).include?(pokemon.form))
     shiny = pokemon.isShiny?
     girl = pokemon.isFemale? ? "f" : ""
     form = pokemon.form
@@ -123,7 +123,7 @@ end
 
 
 def pbIconBitmap(species,form=0,shiny=false,girl=false,egg=false)
-  if (species == :GARDEVOIR && form == 3)
+  if (species == :GARDEVOIR && (5..6).include?(form))
     filename=sprintf("Graphics/Icons/icon%03d%s%s_%s",species,girl,egg,form)
     filename=sprintf("Graphics/Icons/icon%03d%s_%s", species,egg,form) if !pbResolveBitmap(filename)
     filename=sprintf("Graphics/Icons/icon%03d_%s",species, form) if !pbResolveBitmap(filename)
