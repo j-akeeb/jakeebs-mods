@@ -5,7 +5,7 @@
 Create `__jakeebloader.rb` in `Data/Mods`with the following contents:
 
 ```ruby
-Dir[File.join(__dir__, "DevUtilities/*.rb")].each {|file| load File.expand_path(file) }
+Dir[File.join(__dir__, "jakeebs-mods/*.rb")].each {|file| load File.expand_path(file) }
 ```
 
 Create a new folder in `Data/Mods` titled `jakeebs-mods` and place the other mods inside.
