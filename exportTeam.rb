@@ -43,22 +43,22 @@ class PokemonScreen_Scene
         return (@activecmd==cancelsprite) ? -1 : @activecmd
       end
       if Input.triggerex?(:I)
-        copy = ""
+        output = ""
         for mon in $Trainer.party
-          copy += exporter(mon) + "\n\n"
+          output += exporter(mon) + "\n\n"
         end
         # copy to clipboard
         if Kernel.pbConfirmMessage("Would you like to copy your team to the clipboard?")
-          Input.clipboard = copy
+          Input.clipboard = output
           Kernel.pbMessage("Copied team to clipboard.")
-        end
-        # export as txt
-        if Kernel.pbConfirmMessage("Would you like to export your team as a txt?")
+        # export to text
+        elsif Kernel.pbConfirmMessage("Would you like to export your team as a txt?")
           File.open("#{$Trainer.name}'s team.txt", "wb") { |f| # r = read, w = write, + = append, b = bytes (don't worry about this one)
-          f.write(copy)
+            f.write(output)
           } 
           Kernel.pbMessage("Exported team as txt.")
         end
+        
       end
     end
   end
@@ -98,9 +98,9 @@ class PokemonScreen_Scene
       end  
     end  
 
-hiddenPower = pbHiddenPower(mon) if hiddenPower == -1  
+    hiddenPower = pbHiddenPower(mon) if hiddenPower == -1  
 
-fullMon += "\nHidden Power: #{getTypeName(hiddenPower)}" if hiddenPower  
+    fullMon += "\nHidden Power: #{getTypeName(hiddenPower)}" if hiddenPower  
     statnames = ["HP", "Atk", "Def", "SpA", "SpD", "Spe"]  
     evs = mon.ev.each_with_index.select {  
       |ev, idx| ev != 0  
@@ -109,9 +109,9 @@ fullMon += "\nHidden Power: #{getTypeName(hiddenPower)}" if hiddenPower
     }  
 
     ivs = mon.iv.each_with_index.select {  
-  |   iv, idx| iv != 31  
+      |iv, idx| iv != 31  
     }.map {  
-      |iv, idx| "#{ev} #{statnames[idx]}"   
+      |iv, idx| "#{iv} #{statnames[idx]}"   
     }  
     fullMon += "\nEVs: #{evs.join(' / ')}" unless evs.empty?  
     fullMon += "\n#{getNatureName(mon.nature)} Nature"  
