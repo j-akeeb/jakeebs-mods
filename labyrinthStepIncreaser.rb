@@ -25,6 +25,7 @@ $WIRE_LATE_LOAD << proc {
       if !defined?(@@displaybox) || @@displaybox.contents.disposed?
         @@displaybox = Window_UnformattedTextPokemon.new() # Unformatted for speed\
         @@displaybox.setSkin("Graphics/Windowskins/choice 7")
+        @@displaybox.baseColor, @@displaybox.shadowColor = getDefaultTextColors(@@displaybox.windowskin)
         positionBox
         @@displaybox.z = 99999
       end
