@@ -23,3 +23,5 @@ Create a new folder in `Data/Mods` titled `jakeebs-mods` and place the other mod
   makes the maximum steps in Zorrailyn Labyrinth 5x the original. (because who wants to take multiple trips)
 - darkGardevoir.rb (depends on 0000.textures.rb, requires darkGardevoir folder)
   adds a Dark Gardevoir form as well as a Mega Evolution accessible by using a Dusk Stone on a female Kirlia. Uses the regular Gardevoirite. (mega back sprite made by The 11th Dimension on RebornEvo!)
+- betterMissy.rb
+  Changes Aevian Mismagius' stat spread from 60/105/60/105/60/105 to 60/105/105/60/60/105. May be expanded on later.
